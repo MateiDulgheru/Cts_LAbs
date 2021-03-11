@@ -32,7 +32,7 @@ public class CurrentAccount extends BankAccount
 	@Override
 	public void transfer(double amount, Account destination) throws IllegalTransferException, InsuficientFundsException 
 	{
-		if(((BankAccount)destination).iban.equals(this.iban))
+		if(((BankAccount)destination).getIban().equals(this.getIban()))
 		{
 			throw new IllegalTransferException("Cod IBAN identic");
 		}

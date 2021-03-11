@@ -34,6 +34,14 @@ public class Main {
 		System.out.println("Suma disponibila este: "+currentAccount.getBalance());
 		System.out.println("Suma din contul 2: "+account2.getBalance());
 		
+		SavingsAccount account3=new SavingsAccount(300,"IBAN3");
+		account3.addInterest(10);
+		System.out.println("suma in contul3 este: " + account3.getBalance());
+		
+		Bank banca=new Bank();
+		
+		BankAccount account4=banca.openBankAccount(AccountType.CURRENT);
+		
 	}
 
 }

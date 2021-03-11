@@ -3,7 +3,7 @@ package ro.ase.cts.seminar2;
 public abstract class BankAccount extends Account
 {
 	private double balance;
-	protected String iban;
+	private String iban;
 	
 	
 	
@@ -11,14 +11,14 @@ public abstract class BankAccount extends Account
 	{
 		//super();
 		this.balance=0;
-		this.iban="";
+		this.setIban("");
 	}
 
 	public BankAccount(double balance, String iban) 
 	{
 		//super();
 		this.balance = balance;
-		this.iban = iban;
+		this.setIban(iban);
 	}
 	
 	
@@ -32,6 +32,14 @@ public abstract class BankAccount extends Account
 
 	@Override
 	public double getBalance() { return this.balance; }
+
+	public String getIban() {
+		return iban;
+	}
+
+	public void setIban(String iban) {
+		this.iban = iban;
+	}
 	
 	
 	
