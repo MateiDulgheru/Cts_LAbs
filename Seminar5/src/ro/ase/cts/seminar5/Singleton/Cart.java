@@ -4,12 +4,14 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
+import ro.ase.cts.seminar5.Factory.Product;
+
 public class Cart {
 	
 	//private static Cart instances = null;
 	private static Map<String, Cart> instances = null;
 	private String type;
-	public ArrayList<String> products;
+	public ArrayList<Product> products;
 	
 	private Cart() {
 		
@@ -30,7 +32,7 @@ public class Cart {
 		return instances.get(type);
 	}
 	
-	public ArrayList<String> getProducts()
+	public ArrayList<Product> getProducts()
 	{
 		return products;
 	}
