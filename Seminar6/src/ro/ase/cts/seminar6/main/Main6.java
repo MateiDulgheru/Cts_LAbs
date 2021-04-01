@@ -1,16 +1,16 @@
-package ro.ase.cts.seminar5.Main;
+package ro.ase.cts.seminar6.main;
 
 import java.util.Scanner;
 
-import ro.ase.cts.seminar5.Factory.AbstractProductFactory;
-import ro.ase.cts.seminar5.Factory.OfficeProduct;
-import ro.ase.cts.seminar5.Factory.Product;
-import ro.ase.cts.seminar5.Factory.ProductFactory;
-import ro.ase.cts.seminar5.Factory.TechProduct;
-import ro.ase.cts.seminar5.Factory.TechProductFactory;
-import ro.ase.cts.seminar5.Singleton.Cart;
+import ro.ase.cts.seminar6.builder.AbstractProductFactory;
+import ro.ase.cts.seminar6.builder.OfficeProduct;
+import ro.ase.cts.seminar6.builder.Product;
+import ro.ase.cts.seminar6.builder.ProductFactory;
+import ro.ase.cts.seminar6.builder.TechProduct;
+import ro.ase.cts.seminar6.builder.TechProductFactory;
+import ro.ase.cts.seminar6.singleton.Cart;
 
-public class Main5 {
+public class Main6 {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
