@@ -37,7 +37,16 @@ public class Main6 {
 				productFactory = new TechProductFactory();
 			}
 		}
-		myProduct = productFactory.makeProduct();
+		System.out.println(productFactory.getCatalog());
+		userPreference = scan.nextLine();
+		try {
+		int selectedId = Integer.valueOf(userPreference);
+		myProduct = productFactory.makeProduct(selectedId);
+		}
+		catch(NumberFormatException e){
+			System.err.println("selectie invalida");
+		}
+		
 		/*} else {
 			System.out.println("Optiune invalida");
 			System.out.println("Catalog produse:\n tech-Produse tech \n office - Produse office");
