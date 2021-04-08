@@ -47,6 +47,14 @@ public class TechProductFactory extends AbstractProductFactory{
 	private ArrayList<String> readRecordsFromFile(String fileName){
 		
 		ArrayList<String> records = new ArrayList<String>();
+		System.out.println("Reading product record...");
+		
+		try {
+			Thread.sleep(2000);
+		} catch (InterruptedException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
 		
 		URL fileUrl = getClass().getResource(fileName);
 		File productsFile = new File(fileUrl.getPath());
@@ -64,6 +72,8 @@ public class TechProductFactory extends AbstractProductFactory{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
+		System.out.println("Finished fetching records...");
 		
 		return records;
 	}

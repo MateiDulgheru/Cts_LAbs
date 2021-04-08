@@ -29,7 +29,7 @@ public class Main6 {
 		Product myProduct = null;
 		
 		AbstractProductFactory productFactory = null;
-		//ProductFactory productFactory = new ProductFactory();
+		
 		if(userPreference != null)
 		{
 			if(userPreference.equalsIgnoreCase("tech"))
@@ -37,23 +37,52 @@ public class Main6 {
 				productFactory = new TechProductFactory();
 			}
 		}
+		
 		System.out.println(productFactory.getCatalog());
-		userPreference = scan.nextLine();
-		try {
-		int selectedId = Integer.valueOf(userPreference);
-		myProduct = productFactory.makeProduct(selectedId);
-		}
-		catch(NumberFormatException e){
-			System.err.println("selectie invalida");
-		}
+		//userPreference = scan.nextLine();
 		
-		/*} else {
-			System.out.println("Optiune invalida");
-			System.out.println("Catalog produse:\n tech-Produse tech \n office - Produse office");
-		}*/
+		for(int i =0; i<2; i++)
+		{
+			userPreference = scan.nextLine();
+			try {
+			int selectedId = Integer.valueOf(userPreference);
+			if(myShoppingCart.products.isEmpty())
+			{
+				myProduct = productFactory.makeProduct(selectedId);
+			}
+			for(Product p : myShoppingCart.products)
+			{
+				if(p instanceof TechProduct)
+				{
+					TechProduct tempProduct = (TechProduct)p;
+					
+					if(tempProduct.getId() == selectedId)
+					{
+						try {
+							myProduct =(Product) tempProduct.clone();
+						} catch (CloneNotSupportedException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+					}else {
+						myProduct=productFactory.makeProduct(selectedId);
+					}
+				}
+				
+			}
+			
+			
+			myProduct = productFactory.makeProduct(selectedId);
+			
+			}catch(NumberFormatException e){
+				System.err.println("selectie invalida");
+			}
+			
+			
+			if(myProduct != null) {
+				myShoppingCart.products.add(myProduct);
+			}
 		
-		if(myProduct != null) {
-			myShoppingCart.products.add(myProduct);
 		}
 		
 		for(Product p:myShoppingCart.products)
