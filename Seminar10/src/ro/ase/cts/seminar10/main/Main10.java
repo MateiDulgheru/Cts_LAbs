@@ -3,6 +3,13 @@ package ro.ase.cts.seminar10.main;
 import ro.ase.cts.seminar10.chain.AbstractLogger;
 import ro.ase.cts.seminar10.chain.LoggerChainFactory;
 import ro.ase.cts.seminar10.chain.Verbosity;
+import ro.ase.cts.seminar10.command.CommandInterface;
+import ro.ase.cts.seminar10.command.DimLightCommand;
+import ro.ase.cts.seminar10.command.IncreaseIntensityCommand;
+import ro.ase.cts.seminar10.command.LightBulb;
+import ro.ase.cts.seminar10.command.RemoteControl;
+import ro.ase.cts.seminar10.command.TurnLightOnCommand;
+import ro.ase.cts.seminar10.command.TurnOffLightCommand;
 import ro.ase.cts.seminar10.strategy.MarketingStrategyInterface;
 import ro.ase.cts.seminar10.strategy.ModulMarketing;
 import ro.ase.cts.seminar10.strategy.RandomMarketingStrategy;
@@ -41,6 +48,20 @@ public class Main10 {
 		loggerChain.logMessage(Verbosity.DEBUG, "This is a debug message");
 		
 		System.out.println("------------------------------------------------");
+		
+		LightBulb bulb=new LightBulb();
+		CommandInterface lightOnCommand=new TurnLightOnCommand(bulb);
+		CommandInterface lightOffCommand=new TurnOffLightCommand(bulb);
+		CommandInterface dimLightCommand=new DimLightCommand(bulb);
+		CommandInterface increaseLightCommand=new IncreaseIntensityCommand(bulb);
+		RemoteControl remote=new RemoteControl(lightOnCommand, lightOffCommand, dimLightCommand, increaseLightCommand);
+		
+		remote.pressLightOnButton();
+		remote.pressDimLightButton();
+		remote.pressIncreaseLightButton();
+		remote.pressLightOffButton();
+		
+		
 		
 	}
 
