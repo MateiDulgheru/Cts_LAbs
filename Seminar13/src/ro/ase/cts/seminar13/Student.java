@@ -11,6 +11,8 @@ public class Student {
 	String nume;
 	int varsta;
 	int note[];
+	private static final int NOTA_MAX=10;
+	private static final int NOTA_MIN=1;
 	
 	public Student(String nume, int varsta, int[] note) {
 		super();
@@ -40,9 +42,30 @@ public class Student {
 		return note;
 	}
 
-	public void setNote(int[] note) {
-		this.note = note;
+	public void setNote(int[] note) throws StudentExceptionWrongValue {
+		if(note!=null) {
+			for(int i=0; i<note.length; i++) {
+				if(note[i]>NOTA_MAX || note[i]<NOTA_MIN) throw new 
+					StudentExceptionWrongValue("Invalid nota - " + note[i]);
+			}
+			this.note = note;
+		}
+		
 	}
 
-	
+	public float calculMedie() throws StudentExceptionWrongValue{
+		
+		if(note==null) {
+			throw new StudentExceptionWrongValue("empty dataset - note");
+		}
+		
+		float suma=0;
+		for(int i=0; i<note.length; i++)
+		{
+			suma+=note[i];
+		}
+		float medie=suma/note.length;
+		return (int)(medie * 100)/100.0f;
+		//return (int)(suma/note.length * 100) / 100.0f;
+	}
 }
