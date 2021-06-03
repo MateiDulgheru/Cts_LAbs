@@ -1,14 +1,12 @@
 package ro.ase.cts.seminar14;
 
-public class Student {
+public class Student extends StudentAbstract{
 	
 	/*constraints
 	 * nume - [3 - 225] caractere
 	 * varsta - [18 - 30]
 	 * note - [1 - 10]*/
-	String nume;
-	int varsta;
-	int note[];
+	
 	private static final int NOTA_MAX=10;
 	private static final int NOTA_MIN=1;
 	

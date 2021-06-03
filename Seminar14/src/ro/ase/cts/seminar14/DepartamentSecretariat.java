@@ -4,20 +4,42 @@ import java.util.ArrayList;
 
 public class DepartamentSecretariat {
 	
-	ArrayList<Student> studenti;
+	private static final int MIN_MEDIE_MERIT= 8;
+	private static final int MIN_MEDIE_EXCELENTA= 9;
+	ArrayList<StudentAbstract> studenti;
 	
-	public DepartamentSecretariat() {
-		this.studenti=new ArrayList<Student>();
+	
+	
+	public ArrayList<StudentAbstract> getStudenti() {
+		return studenti;
 	}
 
-	public DepartamentSecretariat(ArrayList<Student> studenti) {
+	public void setStudenti(ArrayList<StudentAbstract> studenti) {
+		this.studenti = studenti;
+	}
+
+	public DepartamentSecretariat() {
+		this.studenti=new ArrayList<StudentAbstract>();
+	}
+
+	public DepartamentSecretariat(ArrayList<StudentAbstract> studenti) {
 		super();
 		this.studenti = studenti;
 	}
 	
-	float calculBursa(int studentIndex)
+	public float calculBursa(int studentIndex)
 	{
-		return 0;
+		float medieStudent=0;
+		try {
+			medieStudent = studenti.get(studentIndex).calculMedie();
+		} catch (StudentExceptionWrongValue e) {
+			// TODO Auto-generated catch block
+			System.err.println(e.getMessage());
+		}
+		if(medieStudent>=MIN_MEDIE_EXCELENTA)
+			return TipBursaEnum.EXCELENTA.getCuantum();
+		else if(medieStudent>=MIN_MEDIE_MERIT) return TipBursaEnum.MERIT.getCuantum();
+		else return 0;
 	}
 
 }
